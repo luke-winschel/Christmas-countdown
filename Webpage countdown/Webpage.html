@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+<body>
+    <link href="Web design.CSS" rel="stylesheet" />
+    <h1>
+        Christmas Countdown Timer
+    </h1>
+    <div class="sidenav">
+        <a>Other Counters</a>
+        <a href="#">New Years</a>
+        <a href="#">Martin Luther King Jr. Day</a>
+        <a href="#">Valentines Day</a>
+        <a href="#">St. Patricks Day</a>
+        <a href="#">Valentines Day</a>
+        <a href="#">Easter Sunday</a>
+        <a href="#">Memorial Day</a>
+        <a href="#">Independence Day (USA)</a>
+        <a href="#">Labor Day</a>
+        <a href="#">Columbus Day</a>
+        <a href="#">Hallowee</a>
+        <a href="#">Veterans's Day</a>
+        <a href="#">Thanksgiving Day</a>
+        <a href="#">Christmas Day</a>
+    </div>
+    <h3 id="p1"></h3>
+    <div class = "output">
+    <!-- Display the countdown timer in an element -->
+        
+    <p id="demo"></p>
+
+    <script>
+        // Set the date we're counting down to
+        var countDownDate = new Date("Dec 25, 2023 0:00:00").getTime();
+            
+        // Update the count down every 1 second
+        var x = setInterval(function () {
+
+            // Get today's date and time
+            var now = new Date().getTime();
+
+                // Find the distance between now and the count down date
+                var distance = countDownDate - now;
+            
+                // Time calculations for years, months, days, hours, minutes and seconds
+                //Math floor calculation for years
+                //First equation adds multipliocator of 365 to convert into the number of year between dates (365 days in a year)
+                //If the number of days is over 365 the year counter will increase
+                var years = Math.floor((distance % (1000 * 60 * 60 * 24 * 30 * 12 * 356)) / (1000 * 60 * 60 * 24 * 30 * 12));
+                    if (years < 10) {
+                        years = "0" + years;
+                    } else {
+                        years = years;
+                    }
+
+                //Math floor calculation for months
+                //First equation adds multipliocator of 12 to convert into months (12 months in a year)
+                var months = Math.floor((distance % (1000 * 60 * 60 * 24 * 30 * 12)) / (1000 * 60 * 60 * 24 * 30));
+                    if (months < 10) {
+                        months = "0" + months;
+                    } else {
+                        months = months;
+                    }
+                //Math floor calculation for days
+                //First equation adds multipliocator of 30 to convert into days (30)
+                var days = Math.floor((distance % (1000 * 60 * 60 * 24 * 30)) / (1000 * 60 * 60 * 24));
+                    if (days < 10) {
+                        days = "0" + days;
+                    } else {
+                        days = days
+                    }
+                //Math floor calculation for hours
+                //First equation adds multipliocator of 24 to convert into hours (24 hours in a day)
+                var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                    if (hours < 10) {
+                        hours = "0" + hours;
+                    } else {
+                        hours = hours
+                    }
+                //Math floor calculation for minutes
+                //First equation adds additional multiplicator of 60 to convert to a minute (60 seconds in a minute)
+                var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+                    if (minutes < 10) {
+                        minutes = "0" + minutes;
+                    } else {
+                        minutes = minutes
+                    }
+                //Math floor calculation for seconds
+                var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+                    if (seconds < 10) {
+                        seconds = "0" + seconds;
+                    } else {
+                        seconds = seconds
+                    }
+                if (days < 0) {
+                    month--;
+                    var copy1 = new Date(countDownDate.getTime());
+                    copy1.setDate(32);
+                    days = 32 - countDownDate.getdate() - copy1.getDate() + now.getDate();
+                }
+          
+            // Display the result in the element with id="demo" 
+            document.getElementById("demo").innerHTML =  years + '&nbsp&nbsp&nbsp&nbsp'
+                + months + '&nbsp&nbsp&nbsp&nbsp'
+                + days + '&nbsp&nbsp&nbsp&nbsp'
+                + hours + '&nbsp&nbsp&nbsp&nbsp&nbsp'
+                + minutes + '&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp'
+                + seconds + '' ;
+                // If the count down is finished, write some text
+                if (distance < 0) {
+                    clearInterval(x);
+                document.getElementById("demo").innerHTML = "EXPIRED";
+             
+                }
+        }, 1000);
+    </script>
+        </div>
+
+    <div class="labels">
+        <h2>
+            Years Months Days Hours Minutes Seconds
+
+        </h2>
+    </div>
+        
+</body>
+</html> 
